@@ -107,3 +107,10 @@ Generating WOPI public key...Done
 Restarting services... OK
 JWT is enabled by default. A random secret is generated automatically. Run the command '# documentserver-jwt-status.sh' to get information about JWT.
 ```
+
+- Prevent new NGINX `default.conf` from being added
+
+```bash
+touch /etc/nginx/conf.d/default.conf
+chattr +i /etc/nginx/conf.d/default.conf
+```
