@@ -27,6 +27,12 @@ subscription-manager repos --enable codeready-builder-for-rhel-10-x86_64-rpms
 dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-10.noarch.rpm
 ```
 
+- Add SELinux policy
+
+```bash
+semanage fcontext -a -t httpd_log_t "/var/log/onlyoffice/documentserver/nginx.error.log"
+```
+
 - Install PostgreSQL
 We are using the package from RHEL repositories here, because upstream PostgreSQL is not confined by SELinux.
 Also, OnlyOffice doesn't even document which PostgreSQL version is supported, and their docker uses 15 as of this writing.
